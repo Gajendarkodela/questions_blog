@@ -17,9 +17,8 @@
         <div id="a-<%= answer.id%>">
       </div>
         <u> comments</u>
-        <% answer.discussions.each do |comment|%>
-          <div class="ml-5 mt-3"> By: <b><%= comment.user.email %></b> </div>
-          <div class="ml-5 p-2"> <%= comment.description%></div>
+        <% answer.discussions.each do |comment| %>
+          <%= render 'comment_body', comment: comment %>
         <% end %>
       </div>
     <% end %>

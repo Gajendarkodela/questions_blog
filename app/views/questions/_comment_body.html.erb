@@ -1,0 +1,11 @@
+
+<div class="ml-5 mt-3"> By: <b><%= comment.user.email %></b> </div>
+<div class="ml-5 p-2"> 
+  <%= comment.description%>
+  <%= link_to 'reply', new_comment_path(comment_id: comment.id), remote: true%>
+  <div id="a-<%= comment.id%>"> </div>
+  <% if comment.discussions.exists? %> <u> replies </u> <% end %>
+  <% comment.discussions.each do |discussion| %>
+    <%= render 'comment_body', comment: discussion %>
+  <% end %>
+</div>

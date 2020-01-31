@@ -43,6 +43,7 @@ User.all.each do |user|
   answer = question.answers.create(description: question_data[:answer1], user_id: users.last.id)
   answer.discussions.create(description: question_data[:comment], user_id: user.id)
   question.answers.create(description: question_data[:answer2], user_id: users[1].id)
-  answer.discussions.create(description: "Sorry For that.", user_id: users[2].id)
+  answer = answer.discussions.create(description: "Sorry For that.", user_id: users[2].id)
+  answer.discussions.create(description: "No Problem Man. Cheers!", user_id: users[3].id)
   i = i+1
 end
