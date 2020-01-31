@@ -2,8 +2,10 @@
   <div class="card p-5 mt-5">
     <div class="p-2 q-border row">Q: <b> <%= question.question_name %> </b>
       <div class="" style="position: absolute;right: 28px;">
-        <%= link_to  '<i class="text-primary fa fa-pencil pr-2"></i>'.html_safe, edit_question_path(question) %></td>
-        <%= link_to '<i class="text-danger fa fa-trash"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user.id == question.user_id%>
+          <%= link_to  '<i class="text-primary fa fa-pencil pr-2"></i>'.html_safe, edit_question_path(question) %></td>
+          <%= link_to '<i class="text-danger fa fa-trash"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </div>
     </div>
     <td><%= link_to 'Add your answer', question_new_comment_path(question), remote: true%></td>
