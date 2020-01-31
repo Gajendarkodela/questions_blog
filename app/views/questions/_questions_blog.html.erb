@@ -1,6 +1,6 @@
 <% @questions.each do |question| %>
   <div class="card p-5 mt-5">
-    <div class="p-2 q-border row">Q: <%= question.question_name %>
+    <div class="p-2 q-border row">Q: <b> <%= question.question_name %> </b>
       <div class="" style="position: absolute;right: 28px;">
         <%= link_to  '<i class="text-primary fa fa-pencil pr-2"></i>'.html_safe, edit_question_path(question) %></td>
         <%= link_to '<i class="text-danger fa fa-trash"></i>'.html_safe, question, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -8,7 +8,7 @@
     </div>
     <td><%= link_to 'Add your answer', question_new_comment_path(question), remote: true%></td>
     <div id="q-<%= question.id%>"></div>
-    <u> Comments </u>
+    <u> Answers </u>
     <% question.answers.each do |answer| %>
       <div class="ml-5 mt-3"> By: <b><%= answer.user.email %></b> </div>
       <div class="card ml-5 p-2"> 
@@ -16,7 +16,7 @@
         <%= link_to 'reply', new_comment_path(comment_id: answer.id), remote: true%>
         <div id="a-<%= answer.id%>">
       </div>
-
+        <u> comments</u>
         <% answer.discussions.each do |comment|%>
           <div class="ml-5 mt-3"> By: <b><%= comment.user.email %></b> </div>
           <div class="ml-5 p-2"> <%= comment.description%></div>

@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all.order(id: :desc).eager_load(:answers, :user)
+    @questions = Question.all.order(updated_at: :desc).eager_load(:answers, :user)
   end
 
   # GET /questions/1
@@ -79,6 +79,6 @@ class QuestionsController < ApplicationController
   end
 
   def fetch_questions
-    @questions = current_user.questions.order(id: :asc)
+    @questions = current_user.questions.order(updated_at: :desc)
   end
 end

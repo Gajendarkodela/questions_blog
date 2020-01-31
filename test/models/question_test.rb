@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save Question without user" do
+    question = Question.new
+    assert !question.save
+  end
 end

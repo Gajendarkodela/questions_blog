@@ -4,7 +4,5 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   has_many :discussions, as: :commentable, class_name: 'Comment'
 
-  def check_comment_type
-    on_comment?
-  end
+  validates_presence_of :description
 end
